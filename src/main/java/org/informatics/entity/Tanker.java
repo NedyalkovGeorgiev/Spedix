@@ -13,7 +13,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Tanker extends Vehicle {
+public class Tanker extends Truck {
     private double volumeCapacity;
     @Enumerated(EnumType.STRING)
     private CargoType type;

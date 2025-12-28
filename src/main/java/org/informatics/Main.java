@@ -7,7 +7,6 @@ import org.informatics.entity.CargoType;
 import org.informatics.entity.Client;
 import org.informatics.entity.Company;
 import org.informatics.entity.Driver;
-import org.informatics.entity.Employee;
 import org.informatics.entity.Qualification;
 import org.informatics.entity.RefrigeratedTruck;
 
@@ -30,7 +29,7 @@ public class Main {
             driver.setName("Captain Jack");
             driver.setSalary(new BigDecimal("4500.50"));
             driver.setCompany(company);
-            driver.setQualifications(Set.of(Qualification.HAZMAT, Qualification.HEAVY_LOAD));
+            driver.setQualifications(Set.of(Qualification.HAZMAT, Qualification.OVERSIZED));
             session.persist(driver);
 
             RefrigeratedTruck reefer = new RefrigeratedTruck();
