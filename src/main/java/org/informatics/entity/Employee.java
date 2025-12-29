@@ -3,6 +3,7 @@ package org.informatics.entity;
 import java.math.BigDecimal;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -27,7 +28,7 @@ public abstract class Employee {
     private Long id;
     private String name;
     private BigDecimal salary;
-    @ManyToOne
+    @ManyToOne(fetch =  FetchType.LAZY)
     @JoinColumn(name = "company_id")
     private Company company;
 }

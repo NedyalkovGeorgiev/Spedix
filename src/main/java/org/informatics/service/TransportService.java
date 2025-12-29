@@ -1,18 +1,25 @@
 package org.informatics.service;
 
+import static org.informatics.configuration.TransportConfig.LEGAL_HEIGHT_LIMIT;
+import static org.informatics.configuration.TransportConfig.LEGAL_LENGTH_LIMIT;
+import static org.informatics.configuration.TransportConfig.LEGAL_WIDTH_LIMIT;
+
+import org.informatics.dao.CompanyDao;
 import org.informatics.dao.DriverDao;
 import org.informatics.dao.TransportDao;
 import org.informatics.entity.Bus;
 import org.informatics.entity.CargoTransport;
-import org.informatics.entity.ConcreteMixer;
+import org.informatics.entity.Company;
 import org.informatics.entity.Driver;
+import org.informatics.entity.Employee;
 import org.informatics.entity.PassengerTransport;
 import org.informatics.entity.Qualification;
 import org.informatics.entity.RefrigeratedTruck;
-import org.informatics.entity.Tanker;
 import org.informatics.entity.Transport;
 import org.informatics.entity.Truck;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class TransportService {
@@ -28,9 +35,6 @@ public class TransportService {
         }
 
         Driver driverWithQuals = new DriverDao().getDriverWithQualifications(transport.getDriver().getId());
-        Double limitCargoHeight = 4.0;
-        Double limitCargoWidth = 2.55;
-        Double limitCargoLength = 12.0;
 
         if (transport instanceof CargoTransport cargo) {
             if (!(transport.getVehicle() instanceof Truck truck)) {
@@ -41,11 +45,14 @@ public class TransportService {
                 throw new IllegalArgumentException("Cargo weight exceeds truck capacity!");
             }
 
-            if (truck instanceof RefrigeratedTruck reefer && cargo.getRequiredMinTemp() != null &&
-                cargo.getRequiredMaxTemp() != null) {
-                if (cargo.getRequiredMinTemp() < reefer.getMinTemperature() ||
-                    cargo.getRequiredMaxTemp() > reefer.getMaxTemperature()) {
-                    throw new IllegalArgumentException("Truck cannot maintain required cargo temperature!");
+            if (truck instanceof RefrigeratedTruck reefer && (cargo.getRequiredMinTemp() != null ||
+                cargo.getRequiredMaxTemp() != null)) {
+                if (cargo.getRequiredMinTemp() != null && cargo.getRequiredMinTemp() < reefer.getMinTemperature()) {
+                    throw new IllegalArgumentException("Truck cannot reach required minimum temperature!");
+                }
+
+                if (cargo.getRequiredMaxTemp() != null && cargo.getRequiredMaxTemp() > reefer.getMaxTemperature()) {
+                    throw new IllegalArgumentException("Truck cannot maintain required maximum temperature!");
                 }
             }
 
@@ -53,9 +60,9 @@ public class TransportService {
                 throw new IllegalArgumentException("Driver not qualified for Hazardous Cargo!");
             }
 
-            if ((cargo.getHeight() != null && cargo.getHeight() > limitCargoHeight) ||
-                    (cargo.getWidth() != null && cargo.getWidth() > limitCargoWidth) ||
-                    (cargo.getLength() != null && cargo.getLength() > limitCargoLength)) {
+            if ((cargo.getHeight() != null && cargo.getHeight() > LEGAL_HEIGHT_LIMIT) ||
+                    (cargo.getWidth() != null && cargo.getWidth() > LEGAL_WIDTH_LIMIT) ||
+                    (cargo.getLength() != null && cargo.getLength() > LEGAL_LENGTH_LIMIT)) {
                 cargo.setOversized(true);
             }
 
@@ -77,13 +84,43 @@ public class TransportService {
 
     public void markAsPaid(Long transportId) {
         Transport transport = transportDao.getById(transportId);
-        if (transport != null) {
+
+        if (transport != null && !transport.isPaid()) {
             transport.setPaid(true);
             transportDao.update(transport);
+
+            if (transport.getCompany() != null) {
+                CompanyDao companyDao = new CompanyDao();
+                Company company = companyDao.getById(transport.getCompany().getId());
+
+                if (company != null) {
+                    BigDecimal price = transport.getPrice() != null ? transport.getPrice() : BigDecimal.ZERO;
+                    BigDecimal currentRevenue = company.getTotalRevenue() != null ? company.getTotalRevenue() : BigDecimal.ZERO;
+
+                    company.setTotalRevenue(currentRevenue.add(price));
+                    companyDao.update(company);
+                }
+            }
         }
     }
 
     public List<Transport> getTransports() {
         return transportDao.getAll();
+    }
+
+    public List<Transport> getAllTransportsByDestination(String destination) {
+        return transportDao.getByDestination(destination);
+    }
+
+    public Long getCountOfCompletedTransportsForDriver(Long driverId) {
+        return transportDao.getTransportCountForDriver(driverId);
+    }
+
+    public BigDecimal getTotalRevenueForDriver(Long driverId) {
+        return transportDao.getRevenueForDriver(driverId);
+    }
+
+    public BigDecimal getTotalRevenueBySpecificPeriod(LocalDateTime start, LocalDateTime end) {
+        return transportDao.getTotalRevenueByPeriod(start, end);
     }
 }

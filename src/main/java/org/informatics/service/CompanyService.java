@@ -12,6 +12,18 @@ public class CompanyService {
         companyDao.create(company);
     }
 
+    public List<Company> getAllCompaniesSortedByName() {
+        return companyDao.getAllSortedByName();
+    }
+
+    public List<Company> getAllCompaniesSortedByRevenue() {
+        return companyDao.getAllSortedByRevenue();
+    }
+
+    public Company getCompanyById(Long id) {
+        return companyDao.getById(id);
+    }
+
     public List<Company> getCompanies() {
         return companyDao.getAll();
     }

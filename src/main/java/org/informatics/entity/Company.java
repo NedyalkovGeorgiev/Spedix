@@ -1,5 +1,6 @@
 package org.informatics.entity;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import jakarta.persistence.Column;
@@ -25,6 +26,7 @@ public class Company {
     @Column(nullable = false, length = 100)
     private String name;
     private String address;
+    private BigDecimal totalRevenue = BigDecimal.ZERO;
     @OneToMany(mappedBy = "company")
     private List<Employee> employees;
     @OneToMany(mappedBy = "company")
