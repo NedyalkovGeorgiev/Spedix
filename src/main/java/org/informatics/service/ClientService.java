@@ -8,11 +8,11 @@ import java.util.List;
 public class ClientService {
     private final ClientDao clientDao = new ClientDao();
 
-    public void createCompany(Client client) {
+    public void createClient(Client client) {
         clientDao.create(client);
     }
 
-    public List<Client> getCompanies() {
+    public List<Client> getClients() {
         return clientDao.getAll();
     }
 }

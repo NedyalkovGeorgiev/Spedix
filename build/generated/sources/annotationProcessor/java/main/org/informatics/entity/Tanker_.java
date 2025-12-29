@@ -8,7 +8,7 @@ import jakarta.persistence.metamodel.StaticMetamodel;
  * Static metamodel for {@link org.informatics.entity.Tanker}
  **/
 @StaticMetamodel(Tanker.class)
-public abstract class Tanker_ extends Vehicle_ {
+public abstract class Tanker_ extends Truck_ {
 
 	
 	/**

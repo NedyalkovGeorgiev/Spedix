@@ -27,6 +27,31 @@ public abstract class CargoTransport_ extends Transport_ {
 	public static final String IS_OVERSIZED = "isOversized";
 	
 	/**
+	 * @see #length
+	 **/
+	public static final String LENGTH = "length";
+	
+	/**
+	 * @see #width
+	 **/
+	public static final String WIDTH = "width";
+	
+	/**
+	 * @see #height
+	 **/
+	public static final String HEIGHT = "height";
+	
+	/**
+	 * @see #requiredMinTemp
+	 **/
+	public static final String REQUIRED_MIN_TEMP = "requiredMinTemp";
+	
+	/**
+	 * @see #requiredMaxTemp
+	 **/
+	public static final String REQUIRED_MAX_TEMP = "requiredMaxTemp";
+	
+	/**
 	 * @see #cargoType
 	 **/
 	public static final String CARGO_TYPE = "cargoType";
@@ -51,6 +76,31 @@ public abstract class CargoTransport_ extends Transport_ {
 	 * Static metamodel for attribute {@link org.informatics.entity.CargoTransport#isOversized}
 	 **/
 	public static volatile SingularAttribute<CargoTransport, Boolean> isOversized;
+	
+	/**
+	 * Static metamodel for attribute {@link org.informatics.entity.CargoTransport#length}
+	 **/
+	public static volatile SingularAttribute<CargoTransport, Double> length;
+	
+	/**
+	 * Static metamodel for attribute {@link org.informatics.entity.CargoTransport#width}
+	 **/
+	public static volatile SingularAttribute<CargoTransport, Double> width;
+	
+	/**
+	 * Static metamodel for attribute {@link org.informatics.entity.CargoTransport#height}
+	 **/
+	public static volatile SingularAttribute<CargoTransport, Double> height;
+	
+	/**
+	 * Static metamodel for attribute {@link org.informatics.entity.CargoTransport#requiredMinTemp}
+	 **/
+	public static volatile SingularAttribute<CargoTransport, Double> requiredMinTemp;
+	
+	/**
+	 * Static metamodel for attribute {@link org.informatics.entity.CargoTransport#requiredMaxTemp}
+	 **/
+	public static volatile SingularAttribute<CargoTransport, Double> requiredMaxTemp;
 	
 	/**
 	 * Static metamodel for attribute {@link org.informatics.entity.CargoTransport#cargoType}

@@ -1,9 +1,11 @@
 package org.informatics.service;
 
+import org.informatics.dao.DriverDao;
 import org.informatics.dao.TransportDao;
 import org.informatics.entity.Bus;
 import org.informatics.entity.CargoTransport;
 import org.informatics.entity.ConcreteMixer;
+import org.informatics.entity.Driver;
 import org.informatics.entity.PassengerTransport;
 import org.informatics.entity.Qualification;
 import org.informatics.entity.RefrigeratedTruck;
@@ -22,24 +24,43 @@ public class TransportService {
         }
 
         if (transport.getArrivalDate().isBefore(transport.getDepartureDate())) {
-            throw new IllegalArgumentException("Arrival cannot be before Departure");
+            throw new IllegalArgumentException("Arrival cannot be before Departure!");
         }
 
+        Driver driverWithQuals = new DriverDao().getDriverWithQualifications(transport.getDriver().getId());
+        Double limitCargoHeight = 4.0;
+        Double limitCargoWidth = 2.55;
+        Double limitCargoLength = 12.0;
+
         if (transport instanceof CargoTransport cargo) {
-            if (transport.getVehicle() instanceof Truck truck) {
-                if (cargo.getWeight() > truck.getMaxLoadWeight()) {
-                    throw new IllegalArgumentException("Cargo weight exceeds truck capacity!");
-                }
-            } else {
+            if (!(transport.getVehicle() instanceof Truck truck)) {
                 throw new IllegalArgumentException("Cargo transport requires a Truck type vehicle!");
             }
 
-            if (cargo.isHazardous() && !transport.getDriver().getQualifications().contains(Qualification.HAZMAT)) {
-                throw new IllegalArgumentException("Driver is not qualified for Hazardous Cargo!");
+            if (cargo.getWeight() > truck.getMaxLoadWeight()) {
+                throw new IllegalArgumentException("Cargo weight exceeds truck capacity!");
             }
 
-            if (cargo.isOversized() && !transport.getDriver().getQualifications().contains(Qualification.OVERSIZED)) {
-                throw new IllegalArgumentException("Driver is not qualified for Oversized Cargo!");
+            if (truck instanceof RefrigeratedTruck reefer && cargo.getRequiredMinTemp() != null &&
+                cargo.getRequiredMaxTemp() != null) {
+                if (cargo.getRequiredMinTemp() < reefer.getMinTemperature() ||
+                    cargo.getRequiredMaxTemp() > reefer.getMaxTemperature()) {
+                    throw new IllegalArgumentException("Truck cannot maintain required cargo temperature!");
+                }
+            }
+
+            if (cargo.isHazardous() && !driverWithQuals.getQualifications().contains(Qualification.HAZMAT)) {
+                throw new IllegalArgumentException("Driver not qualified for Hazardous Cargo!");
+            }
+
+            if ((cargo.getHeight() != null && cargo.getHeight() > limitCargoHeight) ||
+                    (cargo.getWidth() != null && cargo.getWidth() > limitCargoWidth) ||
+                    (cargo.getLength() != null && cargo.getLength() > limitCargoLength)) {
+                cargo.setOversized(true);
+            }
+
+            if ((cargo.isOversized() && !driverWithQuals.getQualifications().contains(Qualification.OVERSIZED))) {
+                throw new IllegalArgumentException("Driver not qualified for Oversized Cargo!");
             }
         } else if (transport instanceof PassengerTransport passenger) {
             if (transport.getVehicle() instanceof Bus bus) {

@@ -18,6 +18,11 @@ public class CargoTransport extends Transport {
     private double weight;
     private boolean isHazardous;
     private boolean isOversized;
+    private Double length;
+    private Double width;
+    private Double height;
+    private Double requiredMinTemp;
+    private Double requiredMaxTemp;
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private CargoType cargoType = CargoType.GENERAL;
