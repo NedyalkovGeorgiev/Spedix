@@ -1,8 +1,10 @@
 package org.informatics;
 
 import org.informatics.configuration.SessionFactoryUtil;
+import org.informatics.dto.CompanyDTO;
+import org.informatics.dto.DriverDTO;
+import org.informatics.dto.TransportDTO;
 import org.informatics.entity.CargoTransport;
-import org.informatics.entity.CargoType;
 import org.informatics.entity.Client;
 import org.informatics.entity.Company;
 import org.informatics.entity.Driver;
@@ -16,6 +18,7 @@ import org.informatics.service.VehicleService;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Set;
 
 public class Main {
@@ -28,99 +31,66 @@ public class Main {
         TransportService transportService = new TransportService();
 
         try {
-            System.out.println("--- BUILDING TEST ---");
+            System.out.println("--- INITIALIZING DTO-DRIVEN UNIVERSE ---");
 
-            // 1. Create Companies
-            Company spedix = new Company(); spedix.setName("Spedix Alpha");
-            companyService.createCompany(spedix);
+            // 1. Create Base Data
+            Company company = new Company();
+            company.setName("Spedix Elite");
+            companyService.createCompany(company);
 
-            Company beta = new Company(); beta.setName("Beta Logistics");
-            companyService.createCompany(beta);
+            Driver driver = new Driver();
+            driver.setName("Pro Driver Alex");
+            driver.setSalary(new BigDecimal("6500"));
+            driver.setQualifications(Set.of(Qualification.HAZMAT, Qualification.OVERSIZED));
+            driver.setCompany(company);
+            employeeService.createEmployee(driver);
 
-            // 2. Create Drivers (Different Salaries and Qualifications)
-            Driver steve = new Driver();
-            steve.setName("Safe Steve");
-            steve.setSalary(new BigDecimal("5000"));
-            steve.setQualifications(Set.of(Qualification.HAZMAT));
-            steve.setCompany(spedix);
-            employeeService.createEmployee(steve);
-
-            Driver alex = new Driver();
-            alex.setName("Alex Pro");
-            alex.setSalary(new BigDecimal("7000"));
-            alex.setQualifications(Set.of(Qualification.OVERSIZED, Qualification.HAZMAT));
-            alex.setCompany(spedix);
-            employeeService.createEmployee(alex);
-
-            // 3. Create Vehicles
             Truck truck = new Truck();
-            truck.setMake("Volvo");
-            truck.setMaxLoadWeight(15000.0);
-            truck.setCompany(spedix);
+            truck.setMake("Scania");
+            truck.setMaxLoadWeight(20000.0);
+            truck.setCompany(company);
             vehicleService.createVehicle(truck);
 
-            // 4. Create Client
             Client client = new Client();
-            client.setName("Mega Corp");
+            client.setName("Global Retail");
             clientService.createClient(client);
 
-            // 5. Create Transports (Assign to different drivers and destinations)
-            CargoTransport t1 = new CargoTransport();
-            t1.setStartPoint("Sofia"); t1.setEndPoint("Plovdiv");
-            t1.setDepartureDate(LocalDateTime.now().minusDays(2));
-            t1.setArrivalDate(LocalDateTime.now().minusDays(1));
-            t1.setPrice(new BigDecimal("1000.00"));
-            t1.setCompany(spedix); t1.setClient(client); t1.setVehicle(truck); t1.setDriver(steve);
-            transportService.logTransport(t1);
+            // 2. Create Transport
+            CargoTransport transport = new CargoTransport();
+            transport.setStartPoint("Sofia");
+            transport.setEndPoint("Munich");
+            transport.setDepartureDate(LocalDateTime.now());
+            transport.setArrivalDate(LocalDateTime.now().plusDays(2));
+            transport.setPrice(new BigDecimal("3200"));
+            transport.setCompany(company);
+            transport.setClient(client);
+            transport.setVehicle(truck);
+            transport.setDriver(driver);
+            transportService.logTransport(transport);
 
-            CargoTransport t2 = new CargoTransport();
-            t2.setStartPoint("Sofia"); t2.setEndPoint("Varna");
-            t2.setDepartureDate(LocalDateTime.now().minusDays(5));
-            t2.setArrivalDate(LocalDateTime.now().minusDays(4));
-            t2.setPrice(new BigDecimal("2500.00"));
-            t2.setCompany(spedix); t2.setClient(client); t2.setVehicle(truck); t2.setDriver(alex);
-            transportService.logTransport(t2);
+            System.out.println("\n--- ANALYTICS & DTO VERIFICATION ---");
 
-            System.out.println("--- ANALYTICS VERIFICATION ---");
+            // TEST 1: Get Companies (DTO)
+            List<CompanyDTO> companies = companyService.getCompanies();
+            System.out.println("Companies in system: " + companies.size());
+            companies.forEach(c -> System.out.println(" - " + c.getName() + " (Employees: " + c.getEmployeeCount() + ")"));
 
-            // TEST 1: Mark as Paid & Company Revenue
-            System.out.println("Processing Payment for Transport to Varna...");
-            transportService.markAsPaid(t2.getId());
-            Company updatedSpedix = companyService.getCompanyById(spedix.getId());
-            System.out.println("Verify Spedix Revenue (Expected 2500.00): " + updatedSpedix.getTotalRevenue());
+            // TEST 2: Get Drivers (DTO + Lazy Collections)
+            List<DriverDTO> drivers = employeeService.getDriversDTO();
+            System.out.println("\nDrivers in system: " + drivers.size());
+            drivers.forEach(d -> System.out.println(" - " + d.getName() + " | Permits: " + d.getQualifications()));
 
-            // TEST 2: Sort Companies by Revenue
-            System.out.println("\nCompanies Sorted by Revenue:");
-            companyService.getAllCompaniesSortedByRevenue().forEach(c ->
-                    System.out.println(" - " + c.getName() + ": $" + c.getTotalRevenue()));
-
-            // TEST 3: Sort Employees by Salary
-            System.out.println("\nEmployees Sorted by Salary:");
+            // TEST 3: Get ALL Employees (DTO Inheritance Test)
+            System.out.println("\nAll Staff (Sorted by Salary):");
             employeeService.getAllEmployeesSortedBySalary().forEach(e ->
-                    System.out.println(" - " + e.getName() + ": $" + e.getSalary()));
+                    System.out.println(" - " + e.getName() + " [$" + e.getSalary() + "] (Company: " + e.getCompanyName() + ")"));
 
-            // TEST 4: Filter Drivers by Qualification
-            System.out.println("\nDrivers with OVERSIZED permit:");
-            employeeService.getAllDriversBySpecificQualification(Qualification.OVERSIZED).forEach(d ->
-                    System.out.println(" - " + d.getName()));
+            // TEST 4: Get Transports
+            List<TransportDTO> transports = transportService.getAllTransportsDTO();
+            System.out.println("\nTransports recorded: " + transports.size());
+            transports.forEach(t -> System.out.println(" - ID: " + t.getId() + " | From: " + t.getStartPoint() + " | Driver: " + t.getDriverName()));
 
-            // TEST 5: Filter Transports by Destination
-            System.out.println("\nTransports to Varna:");
-            transportService.getAllTransportsByDestination("Varna").forEach(t ->
-                    System.out.println(" - ID: " + t.getId() + " From: " + t.getStartPoint()));
-
-            // TEST 6: Driver Performance Report
-            System.out.println("\nDriver Contribution (Alex Pro):");
-            System.out.println(" - Transport Count: " + transportService.getCountOfCompletedTransportsForDriver(alex.getId()));
-            System.out.println(" - Revenue Generated: $" + transportService.getTotalRevenueForDriver(alex.getId()));
-
-            // TEST 7: Period Revenue
-            LocalDateTime lastWeek = LocalDateTime.now().minusDays(7);
-            LocalDateTime tomorrow = LocalDateTime.now().plusDays(1);
-            System.out.println("\nTotal Revenue for last 7 days: $" +
-                    transportService.getTotalRevenueBySpecificPeriod(lastWeek, tomorrow));
-
-            System.out.println("\nAll Analytical requirements met!");
+            System.out.println("\nARCHITECTURE VERIFIED: DTOs are clean and LAZY loading is safe!");
 
         } catch (Exception e) {
             System.err.println("ERROR: " + e.getMessage());

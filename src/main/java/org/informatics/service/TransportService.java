@@ -7,6 +7,7 @@ import static org.informatics.configuration.TransportConfig.LEGAL_WIDTH_LIMIT;
 import org.informatics.dao.CompanyDao;
 import org.informatics.dao.DriverDao;
 import org.informatics.dao.TransportDao;
+import org.informatics.dto.TransportDTO;
 import org.informatics.entity.Bus;
 import org.informatics.entity.CargoTransport;
 import org.informatics.entity.Company;
@@ -21,6 +22,7 @@ import org.informatics.entity.Truck;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class TransportService {
     private final TransportDao transportDao = new TransportDao();
@@ -104,8 +106,10 @@ public class TransportService {
         }
     }
 
-    public List<Transport> getTransports() {
-        return transportDao.getAll();
+    public List<TransportDTO> getTransports() {
+        return transportDao.getAll().stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
     }
 
     public List<Transport> getAllTransportsByDestination(String destination) {
@@ -122,5 +126,23 @@ public class TransportService {
 
     public BigDecimal getTotalRevenueBySpecificPeriod(LocalDateTime start, LocalDateTime end) {
         return transportDao.getTotalRevenueByPeriod(start, end);
+    }
+
+    public TransportDTO convertToDTO(Transport transport) {
+        return TransportDTO.builder().id(transport.getId())
+                .startPoint(transport.getStartPoint())
+                .endPoint(transport.getEndPoint())
+                .departureDate(transport.getDepartureDate())
+                .price(transport.getPrice())
+                .driverName(transport.getDriver() != null ? transport.getDriver().getName() : "N/A")
+                .clientName(transport.getClient() != null ? transport.getClient().getName() : "N/A")
+                .vehicleInfo(transport.getVehicle() != null ? transport.getVehicle().getMake() + " " + transport.getVehicle().getModel() : "N/A")
+                .build();
+    }
+
+    public List<TransportDTO> getAllTransportsDTO() {
+        return transportDao.getAllWithDetails().stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
     }
 }

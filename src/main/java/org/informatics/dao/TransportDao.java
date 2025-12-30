@@ -49,4 +49,14 @@ public class TransportDao extends GenericDao<Transport> {
             return Objects.requireNonNullElse(revenue, BigDecimal.ZERO);
         }
     }
+
+    public List<Transport> getAllWithDetails() {
+        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
+            return session.createQuery("SELECT t FROM Transport t " +
+                            "LEFT JOIN FETCH t.driver " +
+                            "LEFT JOIN FETCH t.client " +
+                            "LEFT JOIN FETCH t.vehicle", Transport.class)
+                    .getResultList();
+        }
+    }
 }
