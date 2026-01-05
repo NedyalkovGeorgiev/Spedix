@@ -1,308 +1,308 @@
-s02:00:53.841 [Test worker] DEBUG org.hibernate.SQL - alter table bus drop foreign key FK7uds9bih0ilsmyao2qy5ruhru
-02:00:53.865 [Test worker] DEBUG org.hibernate.SQL - alter table cargo_transport drop foreign key FK3vik6f88hbkialfyc02761mkx
-~02:00:53.877 [Test worker] DEBUG org.hibernate.SQL - alter table concrete_mixer drop foreign key FK8ew0rq66bhpalwl2t6jljbjli
-v02:00:53.888 [Test worker] DEBUG org.hibernate.SQL - alter table driver drop foreign key FKf3l9tcvwqrw8ym63n0vfqc8vv
-Ö02:00:53.909 [Test worker] DEBUG org.hibernate.SQL - alter table driver_qualifications drop foreign key FK1nbt91dxphf0a9yyw58yqvw7p
-x02:00:53.919 [Test worker] DEBUG org.hibernate.SQL - alter table employee drop foreign key FK5v50ed2bjh60n1gc7ifuxmgf4
-É02:00:53.931 [Test worker] DEBUG org.hibernate.SQL - alter table passenger_transport drop foreign key FKrqp69i0grqpoftqibuey6sd5v
-Ç02:00:53.941 [Test worker] DEBUG org.hibernate.SQL - alter table refrigerated_truck drop foreign key FK20i117sfotd2r1ag7fbep7omh
-u02:00:53.948 [Test worker] DEBUG org.hibernate.SQL - alter table staff drop foreign key FKav6774qxrey70920sd85yv78r
-v02:00:53.956 [Test worker] DEBUG org.hibernate.SQL - alter table tanker drop foreign key FKqwlxfvtwoubuaci1l8fgp36gl
-y02:00:53.967 [Test worker] DEBUG org.hibernate.SQL - alter table transport drop foreign key FKhiv3b16vlt1pth6i2sgkq1bhl
-y02:00:53.978 [Test worker] DEBUG org.hibernate.SQL - alter table transport drop foreign key FK2gggq9es5hg8dw3mo8n8uhqcj
-y02:00:53.989 [Test worker] DEBUG org.hibernate.SQL - alter table transport drop foreign key FKa2n8n1m74gpy7gqt0piipr73b
-y02:00:53.998 [Test worker] DEBUG org.hibernate.SQL - alter table transport drop foreign key FK8xipceubfxar38wptuhjhfjkw
-u02:00:54.010 [Test worker] DEBUG org.hibernate.SQL - alter table truck drop foreign key FKhr1a7ybtqa417xh5rfa1x2moc
-w02:00:54.019 [Test worker] DEBUG org.hibernate.SQL - alter table vehicle drop foreign key FK8l9m1j8m30mdmdcbbt1c4trkd
-O02:00:54.029 [Test worker] DEBUG org.hibernate.SQL - drop table if exists bus
-[02:00:54.038 [Test worker] DEBUG org.hibernate.SQL - drop table if exists cargo_transport
-R02:00:54.048 [Test worker] DEBUG org.hibernate.SQL - drop table if exists client
-S02:00:54.059 [Test worker] DEBUG org.hibernate.SQL - drop table if exists company
-Z02:00:54.069 [Test worker] DEBUG org.hibernate.SQL - drop table if exists concrete_mixer
-R02:00:54.078 [Test worker] DEBUG org.hibernate.SQL - drop table if exists driver
-a02:00:54.086 [Test worker] DEBUG org.hibernate.SQL - drop table if exists driver_qualifications
-T02:00:54.095 [Test worker] DEBUG org.hibernate.SQL - drop table if exists employee
-_02:00:54.105 [Test worker] DEBUG org.hibernate.SQL - drop table if exists passenger_transport
-^02:00:54.114 [Test worker] DEBUG org.hibernate.SQL - drop table if exists refrigerated_truck
-Q02:00:54.122 [Test worker] DEBUG org.hibernate.SQL - drop table if exists staff
-R02:00:54.131 [Test worker] DEBUG org.hibernate.SQL - drop table if exists tanker
-U02:00:54.140 [Test worker] DEBUG org.hibernate.SQL - drop table if exists transport
-Q02:00:54.150 [Test worker] DEBUG org.hibernate.SQL - drop table if exists truck
-S02:00:54.159 [Test worker] DEBUG org.hibernate.SQL - drop table if exists vehicle
-ú02:00:54.177 [Test worker] DEBUG org.hibernate.SQL - create table bus (maxPassengers integer not null, id bigint not null, primary key (id)) engine=InnoDB
-≠02:00:54.191 [Test worker] DEBUG org.hibernate.SQL - create table cargo_transport (height float(53), isHazardous bit not null, isOversized bit not null, length float(53), requiredMaxTemp float(53), requiredMinTemp float(53), weight float(53) not null, width float(53), id bigint not null, cargoType enum ('CONCRETE','FRAGILE','GAS','GENERAL','HAZARDOUS','LIQUID','PERISHABLE','POWDER') not null, primary key (id)) engine=InnoDB
-ÿ02:00:54.205 [Test worker] DEBUG org.hibernate.SQL - create table client (id bigint not null auto_increment, email varchar(255), name varchar(255) not null, phoneNumber varchar(255), primary key (id)) engine=InnoDB
-›02:00:54.218 [Test worker] DEBUG org.hibernate.SQL - create table company (totalRevenue decimal(38,2), id bigint not null auto_increment, name varchar(100) not null, address varchar(255), primary key (id)) engine=InnoDB
-®02:00:54.231 [Test worker] DEBUG org.hibernate.SQL - create table concrete_mixer (drumCapacity float(53) not null, id bigint not null, primary key (id)) engine=InnoDB
-02:00:54.244 [Test worker] DEBUG org.hibernate.SQL - create table driver (id bigint not null, primary key (id)) engine=InnoDB
-Â02:00:54.256 [Test worker] DEBUG org.hibernate.SQL - create table driver_qualifications (driver_id bigint not null, qualification enum ('CONCRETE_EXP','FRAGILE','GENERAL','HAZMAT','OVERSIZED','PASSENGER_12_PLUS')) engine=InnoDB
-’02:00:54.268 [Test worker] DEBUG org.hibernate.SQL - create table employee (salary decimal(38,2), company_id bigint, id bigint not null auto_increment, name varchar(255) not null, primary key (id)) engine=InnoDB
-≠02:00:54.280 [Test worker] DEBUG org.hibernate.SQL - create table passenger_transport (passengerCount integer not null, id bigint not null, primary key (id)) engine=InnoDB
-—02:00:54.292 [Test worker] DEBUG org.hibernate.SQL - create table refrigerated_truck (maxTemperature float(53) not null, minTemperature float(53) not null, id bigint not null, primary key (id)) engine=InnoDB
-~02:00:54.305 [Test worker] DEBUG org.hibernate.SQL - create table staff (id bigint not null, primary key (id)) engine=InnoDB
-§02:00:54.316 [Test worker] DEBUG org.hibernate.SQL - create table tanker (isPressurized bit not null, volumeCapacity float(53) not null, id bigint not null, type enum ('CONCRETE','FRAGILE','GAS','GENERAL','HAZARDOUS','LIQUID','PERISHABLE','POWDER') not null, primary key (id)) engine=InnoDB
-ñ02:00:54.329 [Test worker] DEBUG org.hibernate.SQL - create table transport (isPaid bit not null, price decimal(38,2) not null, arrivalDate datetime(6) not null, client_id bigint, company_id bigint, departureDate datetime(6) not null, driver_id bigint, id bigint not null auto_increment, vehicle_id bigint, endPoint varchar(255) not null, startPoint varchar(255) not null, primary key (id)) engine=InnoDB
-†02:00:54.343 [Test worker] DEBUG org.hibernate.SQL - create table truck (maxLoadWeight float(53) not null, id bigint not null, primary key (id)) engine=InnoDB
-“02:00:54.356 [Test worker] DEBUG org.hibernate.SQL - create table vehicle (company_id bigint, id bigint not null auto_increment, make varchar(255) not null, model varchar(255), primary key (id)) engine=InnoDB
-ö02:00:54.369 [Test worker] DEBUG org.hibernate.SQL - alter table bus add constraint FK7uds9bih0ilsmyao2qy5ruhru foreign key (id) references vehicle (id)
-®02:00:54.402 [Test worker] DEBUG org.hibernate.SQL - alter table cargo_transport add constraint FK3vik6f88hbkialfyc02761mkx foreign key (id) references transport (id)
-£02:00:54.435 [Test worker] DEBUG org.hibernate.SQL - alter table concrete_mixer add constraint FK8ew0rq66bhpalwl2t6jljbjli foreign key (id) references truck (id)
-û02:00:54.467 [Test worker] DEBUG org.hibernate.SQL - alter table driver add constraint FKf3l9tcvwqrw8ym63n0vfqc8vv foreign key (id) references employee (id)
-≤02:00:54.496 [Test worker] DEBUG org.hibernate.SQL - alter table driver_qualifications add constraint FK1nbt91dxphf0a9yyw58yqvw7p foreign key (driver_id) references driver (id)
-ß02:00:54.528 [Test worker] DEBUG org.hibernate.SQL - alter table employee add constraint FK5v50ed2bjh60n1gc7ifuxmgf4 foreign key (company_id) references company (id)
-¨02:00:54.565 [Test worker] DEBUG org.hibernate.SQL - alter table passenger_transport add constraint FKrqp69i0grqpoftqibuey6sd5v foreign key (id) references transport (id)
-ß02:00:54.605 [Test worker] DEBUG org.hibernate.SQL - alter table refrigerated_truck add constraint FK20i117sfotd2r1ag7fbep7omh foreign key (id) references truck (id)
-ù02:00:54.648 [Test worker] DEBUG org.hibernate.SQL - alter table staff add constraint FKav6774qxrey70920sd85yv78r foreign key (id) references employee (id)
-õ02:00:54.685 [Test worker] DEBUG org.hibernate.SQL - alter table tanker add constraint FKqwlxfvtwoubuaci1l8fgp36gl foreign key (id) references truck (id)
-¶02:00:54.716 [Test worker] DEBUG org.hibernate.SQL - alter table transport add constraint FKhiv3b16vlt1pth6i2sgkq1bhl foreign key (client_id) references client (id)
-®02:00:54.757 [Test worker] DEBUG org.hibernate.SQL - alter table transport add constraint FK2gggq9es5hg8dw3mo8n8uhqcj foreign key (company_id) references company (id)
-¶02:00:54.799 [Test worker] DEBUG org.hibernate.SQL - alter table transport add constraint FKa2n8n1m74gpy7gqt0piipr73b foreign key (driver_id) references driver (id)
-®02:00:54.845 [Test worker] DEBUG org.hibernate.SQL - alter table transport add constraint FK8xipceubfxar38wptuhjhfjkw foreign key (vehicle_id) references vehicle (id)
-ú02:00:54.893 [Test worker] DEBUG org.hibernate.SQL - alter table truck add constraint FKhr1a7ybtqa417xh5rfa1x2moc foreign key (id) references vehicle (id)
-¶02:00:54.929 [Test worker] DEBUG org.hibernate.SQL - alter table vehicle add constraint FK8l9m1j8m30mdmdcbbt1c4trkd foreign key (company_id) references company (id)
-u02:00:55.043 [Test worker] DEBUG org.hibernate.SQL - insert into company (address,name,totalRevenue) values (?,?,?)
-h02:00:55.052 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [null]
-k02:00:55.053 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Co]
-e02:00:55.053 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:NUMERIC) <- [0]
-s02:00:55.115 [Test worker] DEBUG org.hibernate.SQL - insert into employee (company_id,name,salary) values (?,?,?)
-d02:00:55.116 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [1]
-o02:00:55.116 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Driver]
-h02:00:55.116 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:NUMERIC) <- [1000]
-Y02:00:55.119 [Test worker] DEBUG org.hibernate.SQL - insert into driver (id) values (?)
-d02:00:55.120 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [1]
-02:00:55.130 [Test worker] DEBUG org.hibernate.SQL - insert into driver_qualifications (driver_id,qualification) values (?,?)
-d02:00:55.130 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [1]
-j02:00:55.131 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:ENUM) <- [OVERSIZED]
-q02:00:55.144 [Test worker] DEBUG org.hibernate.SQL - insert into vehicle (company_id,make,model) values (?,?,?)
-g02:00:55.145 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [null]
-n02:00:55.145 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Truck]
-h02:00:55.145 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:VARCHAR) <- [null]
-h02:00:55.147 [Test worker] DEBUG org.hibernate.SQL - insert into truck (maxLoadWeight,id) values (?,?)
-j02:00:55.147 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:DOUBLE) <- [10000.0]
-d02:00:55.148 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:BIGINT) <- [1]
-q02:00:55.158 [Test worker] DEBUG org.hibernate.SQL - insert into client (email,name,phoneNumber) values (?,?,?)
-h02:00:55.158 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [null]
-o02:00:55.158 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Client]
-h02:00:55.159 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:VARCHAR) <- [null]
-ì02:00:55.750 [Test worker] DEBUG org.hibernate.SQL - select d1_0.id,d1_1.company_id,d1_1.name,d1_1.salary,q1_0.driver_id,q1_0.qualification from driver d1_0 join employee d1_1 on d1_0.id=d1_1.id left join driver_qualifications q1_0 on d1_0.id=q1_0.driver_id where d1_0.id=?
-d02:00:55.753 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [1]
-u02:00:55.791 [Test worker] DEBUG org.hibernate.SQL - insert into company (address,name,totalRevenue) values (?,?,?)
-h02:00:55.792 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [null]
-k02:00:55.792 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Co]
-e02:00:55.792 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:NUMERIC) <- [0]
-s02:00:55.797 [Test worker] DEBUG org.hibernate.SQL - insert into employee (company_id,name,salary) values (?,?,?)
-d02:00:55.798 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [2]
-o02:00:55.798 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Driver]
-h02:00:55.798 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:NUMERIC) <- [1000]
-Y02:00:55.798 [Test worker] DEBUG org.hibernate.SQL - insert into driver (id) values (?)
-d02:00:55.799 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [2]
-q02:00:55.804 [Test worker] DEBUG org.hibernate.SQL - insert into vehicle (company_id,make,model) values (?,?,?)
-g02:00:55.804 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [null]
-n02:00:55.805 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Truck]
-h02:00:55.805 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:VARCHAR) <- [null]
-h02:00:55.806 [Test worker] DEBUG org.hibernate.SQL - insert into truck (maxLoadWeight,id) values (?,?)
-j02:00:55.806 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:DOUBLE) <- [10000.0]
-d02:00:55.806 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:BIGINT) <- [2]
-q02:00:55.812 [Test worker] DEBUG org.hibernate.SQL - insert into client (email,name,phoneNumber) values (?,?,?)
-h02:00:55.813 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [null]
-o02:00:55.813 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Client]
-h02:00:55.813 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:VARCHAR) <- [null]
-ì02:00:55.823 [Test worker] DEBUG org.hibernate.SQL - select d1_0.id,d1_1.company_id,d1_1.name,d1_1.salary,q1_0.driver_id,q1_0.qualification from driver d1_0 join employee d1_1 on d1_0.id=d1_1.id left join driver_qualifications q1_0 on d1_0.id=q1_0.driver_id where d1_0.id=?
-d02:00:55.824 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [2]
-u02:00:55.832 [Test worker] DEBUG org.hibernate.SQL - insert into company (address,name,totalRevenue) values (?,?,?)
-h02:00:55.832 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [null]
-k02:00:55.832 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Co]
-e02:00:55.833 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:NUMERIC) <- [0]
-s02:00:55.837 [Test worker] DEBUG org.hibernate.SQL - insert into employee (company_id,name,salary) values (?,?,?)
-d02:00:55.838 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [3]
-o02:00:55.838 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Driver]
-h02:00:55.838 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:NUMERIC) <- [1000]
-Y02:00:55.840 [Test worker] DEBUG org.hibernate.SQL - insert into driver (id) values (?)
-d02:00:55.840 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [3]
-q02:00:55.845 [Test worker] DEBUG org.hibernate.SQL - insert into vehicle (company_id,make,model) values (?,?,?)
-g02:00:55.845 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [null]
-n02:00:55.846 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Truck]
-h02:00:55.846 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:VARCHAR) <- [null]
-h02:00:55.847 [Test worker] DEBUG org.hibernate.SQL - insert into truck (maxLoadWeight,id) values (?,?)
-j02:00:55.848 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:DOUBLE) <- [10000.0]
-d02:00:55.848 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:BIGINT) <- [3]
-q02:00:55.854 [Test worker] DEBUG org.hibernate.SQL - insert into client (email,name,phoneNumber) values (?,?,?)
-h02:00:55.854 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [null]
-o02:00:55.855 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Client]
-h02:00:55.855 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:VARCHAR) <- [null]
-q02:00:55.863 [Test worker] DEBUG org.hibernate.SQL - insert into vehicle (company_id,make,model) values (?,?,?)
-g02:00:55.864 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [null]
-n02:00:55.864 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [ThermoKing]
-h02:00:55.864 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:VARCHAR) <- [null]
-h02:00:55.865 [Test worker] DEBUG org.hibernate.SQL - insert into truck (maxLoadWeight,id) values (?,?)
-j02:00:55.866 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:DOUBLE) <- [10000.0]
-d02:00:55.866 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:BIGINT) <- [4]
-á02:00:55.867 [Test worker] DEBUG org.hibernate.SQL - insert into refrigerated_truck (maxTemperature,minTemperature,id) values (?,?,?)
-f02:00:55.867 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:DOUBLE) <- [5.0]
-h02:00:55.867 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:DOUBLE) <- [-20.0]
-d02:00:55.867 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:BIGINT) <- [4]
-ì02:00:55.873 [Test worker] DEBUG org.hibernate.SQL - select d1_0.id,d1_1.company_id,d1_1.name,d1_1.salary,q1_0.driver_id,q1_0.qualification from driver d1_0 join employee d1_1 on d1_0.id=d1_1.id left join driver_qualifications q1_0 on d1_0.id=q1_0.driver_id where d1_0.id=?
-d02:00:55.874 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [3]
-u02:00:55.881 [Test worker] DEBUG org.hibernate.SQL - insert into company (address,name,totalRevenue) values (?,?,?)
-h02:00:55.882 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [null]
-k02:00:55.882 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Co]
-e02:00:55.882 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:NUMERIC) <- [0]
-s02:00:55.888 [Test worker] DEBUG org.hibernate.SQL - insert into employee (company_id,name,salary) values (?,?,?)
-d02:00:55.889 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [4]
-o02:00:55.889 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Driver]
-h02:00:55.889 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:NUMERIC) <- [1000]
-Y02:00:55.890 [Test worker] DEBUG org.hibernate.SQL - insert into driver (id) values (?)
-d02:00:55.891 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [4]
-q02:00:55.897 [Test worker] DEBUG org.hibernate.SQL - insert into vehicle (company_id,make,model) values (?,?,?)
-g02:00:55.898 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [null]
-n02:00:55.898 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Truck]
-h02:00:55.898 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:VARCHAR) <- [null]
-h02:00:55.901 [Test worker] DEBUG org.hibernate.SQL - insert into truck (maxLoadWeight,id) values (?,?)
-j02:00:55.902 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:DOUBLE) <- [10000.0]
-d02:00:55.902 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:BIGINT) <- [5]
-q02:00:55.907 [Test worker] DEBUG org.hibernate.SQL - insert into client (email,name,phoneNumber) values (?,?,?)
-h02:00:55.907 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [null]
-o02:00:55.907 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Client]
-h02:00:55.907 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:VARCHAR) <- [null]
-ì02:00:55.913 [Test worker] DEBUG org.hibernate.SQL - select d1_0.id,d1_1.company_id,d1_1.name,d1_1.salary,q1_0.driver_id,q1_0.qualification from driver d1_0 join employee d1_1 on d1_0.id=d1_1.id left join driver_qualifications q1_0 on d1_0.id=q1_0.driver_id where d1_0.id=?
-d02:00:55.914 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [4]
-–02:00:55.921 [Test worker] DEBUG org.hibernate.SQL - insert into transport (arrivalDate,client_id,company_id,departureDate,driver_id,endPoint,isPaid,price,startPoint,vehicle_id) values (?,?,?,?,?,?,?,?,?,?)
-Ä02:00:55.921 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:TIMESTAMP) <- [2026-01-06T02:00:55.911980]
-d02:00:55.922 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:BIGINT) <- [4]
-d02:00:55.922 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:BIGINT) <- [4]
-Ä02:00:55.922 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (4:TIMESTAMP) <- [2026-01-05T02:00:55.911980]
-d02:00:55.922 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (5:BIGINT) <- [4]
-e02:00:55.922 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (6:VARCHAR) <- [B]
-i02:00:55.923 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (7:BOOLEAN) <- [false]
-k02:00:55.923 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (8:NUMERIC) <- [5000.00]
-e02:00:55.923 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (9:VARCHAR) <- [A]
-e02:00:55.923 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (10:BIGINT) <- [5]
-—02:00:55.932 [Test worker] DEBUG org.hibernate.SQL - insert into cargo_transport (cargoType,height,isHazardous,isOversized,length,requiredMaxTemp,requiredMinTemp,weight,width,id) values (?,?,?,?,?,?,?,?,?,?)
-h02:00:55.932 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:ENUM) <- [GENERAL]
-g02:00:55.932 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:DOUBLE) <- [null]
-i02:00:55.933 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:BOOLEAN) <- [false]
-i02:00:55.933 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (4:BOOLEAN) <- [false]
-g02:00:55.933 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (5:DOUBLE) <- [null]
-g02:00:55.933 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (6:DOUBLE) <- [null]
-g02:00:55.933 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (7:DOUBLE) <- [null]
-h02:00:55.933 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (8:DOUBLE) <- [500.0]
-g02:00:55.933 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (9:DOUBLE) <- [null]
-e02:00:55.933 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (10:BIGINT) <- [1]
-œ02:00:55.944 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id,case when t1_2.id is not null then 1 when t1_1.id is not null then 2 end,t1_0.arrivalDate,t1_0.client_id,t1_0.company_id,t1_0.departureDate,t1_0.driver_id,t1_0.endPoint,t1_0.isPaid,t1_0.price,t1_0.startPoint,t1_0.vehicle_id,t1_1.cargoType,t1_1.height,t1_1.isHazardous,t1_1.isOversized,t1_1.length,t1_1.requiredMaxTemp,t1_1.requiredMinTemp,t1_1.weight,t1_1.width,t1_2.passengerCount from transport t1_0 left join cargo_transport t1_1 on t1_0.id=t1_1.id left join passenger_transport t1_2 on t1_0.id=t1_2.id where t1_0.id=?
-d02:00:55.945 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [1]
-–02:00:55.958 [Test worker] DEBUG org.hibernate.SQL - select ct1_0.id,ct1_1.arrivalDate,ct1_1.client_id,ct1_1.company_id,ct1_1.departureDate,ct1_1.driver_id,ct1_1.endPoint,ct1_1.isPaid,ct1_1.price,ct1_1.startPoint,ct1_1.vehicle_id,ct1_0.cargoType,ct1_0.height,ct1_0.isHazardous,ct1_0.isOversized,ct1_0.length,ct1_0.requiredMaxTemp,ct1_0.requiredMinTemp,ct1_0.weight,ct1_0.width from cargo_transport ct1_0 join transport ct1_1 on ct1_0.id=ct1_1.id where ct1_0.id=?
-d02:00:55.958 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [1]
-œ02:00:55.968 [Test worker] DEBUG org.hibernate.SQL - update transport set arrivalDate=?,client_id=?,company_id=?,departureDate=?,driver_id=?,endPoint=?,isPaid=?,price=?,startPoint=?,vehicle_id=? where id=?
-Ä02:00:55.968 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:TIMESTAMP) <- [2026-01-06T02:00:55.911980]
-d02:00:55.968 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:BIGINT) <- [4]
-d02:00:55.969 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:BIGINT) <- [4]
-Ä02:00:55.969 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (4:TIMESTAMP) <- [2026-01-05T02:00:55.911980]
-d02:00:55.969 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (5:BIGINT) <- [4]
-e02:00:55.969 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (6:VARCHAR) <- [B]
-h02:00:55.969 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (7:BOOLEAN) <- [true]
-k02:00:55.970 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (8:NUMERIC) <- [5000.00]
-e02:00:55.970 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (9:VARCHAR) <- [A]
-e02:00:55.970 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (10:BIGINT) <- [5]
-e02:00:55.970 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (11:BIGINT) <- [1]
-ê02:00:55.976 [Test worker] DEBUG org.hibernate.SQL - select c1_0.id,c1_0.address,c1_0.name,c1_0.totalRevenue from company c1_0 where c1_0.id=?
-d02:00:55.976 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [4]
-ê02:00:55.982 [Test worker] DEBUG org.hibernate.SQL - select c1_0.id,c1_0.address,c1_0.name,c1_0.totalRevenue from company c1_0 where c1_0.id=?
-d02:00:55.982 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [4]
-t02:00:55.985 [Test worker] DEBUG org.hibernate.SQL - update company set address=?,name=?,totalRevenue=? where id=?
-h02:00:55.985 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [null]
-k02:00:55.985 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Co]
-k02:00:55.985 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:NUMERIC) <- [5000.00]
-d02:00:55.985 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (4:BIGINT) <- [4]
-ê02:00:55.989 [Test worker] DEBUG org.hibernate.SQL - select c1_0.id,c1_0.address,c1_0.name,c1_0.totalRevenue from company c1_0 where c1_0.id=?
-d02:00:55.989 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [4]
-u02:00:55.994 [Test worker] DEBUG org.hibernate.SQL - insert into company (address,name,totalRevenue) values (?,?,?)
-h02:00:55.994 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [null]
-k02:00:55.994 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Co]
-e02:00:55.994 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:NUMERIC) <- [0]
-s02:00:56.000 [Test worker] DEBUG org.hibernate.SQL - insert into employee (company_id,name,salary) values (?,?,?)
-d02:00:56.000 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [5]
-o02:00:56.000 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Driver]
-h02:00:56.001 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:NUMERIC) <- [1000]
-Y02:00:56.002 [Test worker] DEBUG org.hibernate.SQL - insert into driver (id) values (?)
-d02:00:56.003 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [5]
-q02:00:56.007 [Test worker] DEBUG org.hibernate.SQL - insert into vehicle (company_id,make,model) values (?,?,?)
-g02:00:56.008 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [null]
-n02:00:56.008 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Truck]
-h02:00:56.008 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:VARCHAR) <- [null]
-h02:00:56.009 [Test worker] DEBUG org.hibernate.SQL - insert into truck (maxLoadWeight,id) values (?,?)
-j02:00:56.010 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:DOUBLE) <- [10000.0]
-d02:00:56.010 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:BIGINT) <- [6]
-q02:00:56.015 [Test worker] DEBUG org.hibernate.SQL - insert into client (email,name,phoneNumber) values (?,?,?)
-h02:00:56.016 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [null]
-o02:00:56.016 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Client]
-h02:00:56.016 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:VARCHAR) <- [null]
+s02:02:22.464 [Test worker] DEBUG org.hibernate.SQL - alter table bus drop foreign key FK7uds9bih0ilsmyao2qy5ruhru
+02:02:22.477 [Test worker] DEBUG org.hibernate.SQL - alter table cargo_transport drop foreign key FK3vik6f88hbkialfyc02761mkx
+~02:02:22.486 [Test worker] DEBUG org.hibernate.SQL - alter table concrete_mixer drop foreign key FK8ew0rq66bhpalwl2t6jljbjli
+v02:02:22.491 [Test worker] DEBUG org.hibernate.SQL - alter table driver drop foreign key FKf3l9tcvwqrw8ym63n0vfqc8vv
+Ö02:02:22.500 [Test worker] DEBUG org.hibernate.SQL - alter table driver_qualifications drop foreign key FK1nbt91dxphf0a9yyw58yqvw7p
+x02:02:22.506 [Test worker] DEBUG org.hibernate.SQL - alter table employee drop foreign key FK5v50ed2bjh60n1gc7ifuxmgf4
+É02:02:22.515 [Test worker] DEBUG org.hibernate.SQL - alter table passenger_transport drop foreign key FKrqp69i0grqpoftqibuey6sd5v
+Ç02:02:22.520 [Test worker] DEBUG org.hibernate.SQL - alter table refrigerated_truck drop foreign key FK20i117sfotd2r1ag7fbep7omh
+u02:02:22.526 [Test worker] DEBUG org.hibernate.SQL - alter table staff drop foreign key FKav6774qxrey70920sd85yv78r
+v02:02:22.533 [Test worker] DEBUG org.hibernate.SQL - alter table tanker drop foreign key FKqwlxfvtwoubuaci1l8fgp36gl
+y02:02:22.538 [Test worker] DEBUG org.hibernate.SQL - alter table transport drop foreign key FKhiv3b16vlt1pth6i2sgkq1bhl
+y02:02:22.553 [Test worker] DEBUG org.hibernate.SQL - alter table transport drop foreign key FK2gggq9es5hg8dw3mo8n8uhqcj
+y02:02:22.560 [Test worker] DEBUG org.hibernate.SQL - alter table transport drop foreign key FKa2n8n1m74gpy7gqt0piipr73b
+y02:02:22.567 [Test worker] DEBUG org.hibernate.SQL - alter table transport drop foreign key FK8xipceubfxar38wptuhjhfjkw
+u02:02:22.575 [Test worker] DEBUG org.hibernate.SQL - alter table truck drop foreign key FKhr1a7ybtqa417xh5rfa1x2moc
+w02:02:22.582 [Test worker] DEBUG org.hibernate.SQL - alter table vehicle drop foreign key FK8l9m1j8m30mdmdcbbt1c4trkd
+O02:02:22.589 [Test worker] DEBUG org.hibernate.SQL - drop table if exists bus
+[02:02:22.596 [Test worker] DEBUG org.hibernate.SQL - drop table if exists cargo_transport
+R02:02:22.604 [Test worker] DEBUG org.hibernate.SQL - drop table if exists client
+S02:02:22.611 [Test worker] DEBUG org.hibernate.SQL - drop table if exists company
+Z02:02:22.618 [Test worker] DEBUG org.hibernate.SQL - drop table if exists concrete_mixer
+R02:02:22.627 [Test worker] DEBUG org.hibernate.SQL - drop table if exists driver
+a02:02:22.636 [Test worker] DEBUG org.hibernate.SQL - drop table if exists driver_qualifications
+T02:02:22.646 [Test worker] DEBUG org.hibernate.SQL - drop table if exists employee
+_02:02:22.653 [Test worker] DEBUG org.hibernate.SQL - drop table if exists passenger_transport
+^02:02:22.659 [Test worker] DEBUG org.hibernate.SQL - drop table if exists refrigerated_truck
+Q02:02:22.666 [Test worker] DEBUG org.hibernate.SQL - drop table if exists staff
+R02:02:22.672 [Test worker] DEBUG org.hibernate.SQL - drop table if exists tanker
+U02:02:22.678 [Test worker] DEBUG org.hibernate.SQL - drop table if exists transport
+Q02:02:22.686 [Test worker] DEBUG org.hibernate.SQL - drop table if exists truck
+S02:02:22.694 [Test worker] DEBUG org.hibernate.SQL - drop table if exists vehicle
+ú02:02:22.706 [Test worker] DEBUG org.hibernate.SQL - create table bus (maxPassengers integer not null, id bigint not null, primary key (id)) engine=InnoDB
+≠02:02:22.724 [Test worker] DEBUG org.hibernate.SQL - create table cargo_transport (height float(53), isHazardous bit not null, isOversized bit not null, length float(53), requiredMaxTemp float(53), requiredMinTemp float(53), weight float(53) not null, width float(53), id bigint not null, cargoType enum ('CONCRETE','FRAGILE','GAS','GENERAL','HAZARDOUS','LIQUID','PERISHABLE','POWDER') not null, primary key (id)) engine=InnoDB
+ÿ02:02:22.734 [Test worker] DEBUG org.hibernate.SQL - create table client (id bigint not null auto_increment, email varchar(255), name varchar(255) not null, phoneNumber varchar(255), primary key (id)) engine=InnoDB
+›02:02:22.745 [Test worker] DEBUG org.hibernate.SQL - create table company (totalRevenue decimal(38,2), id bigint not null auto_increment, name varchar(100) not null, address varchar(255), primary key (id)) engine=InnoDB
+®02:02:22.756 [Test worker] DEBUG org.hibernate.SQL - create table concrete_mixer (drumCapacity float(53) not null, id bigint not null, primary key (id)) engine=InnoDB
+02:02:22.765 [Test worker] DEBUG org.hibernate.SQL - create table driver (id bigint not null, primary key (id)) engine=InnoDB
+Â02:02:22.776 [Test worker] DEBUG org.hibernate.SQL - create table driver_qualifications (driver_id bigint not null, qualification enum ('CONCRETE_EXP','FRAGILE','GENERAL','HAZMAT','OVERSIZED','PASSENGER_12_PLUS')) engine=InnoDB
+’02:02:22.787 [Test worker] DEBUG org.hibernate.SQL - create table employee (salary decimal(38,2), company_id bigint, id bigint not null auto_increment, name varchar(255) not null, primary key (id)) engine=InnoDB
+≠02:02:22.797 [Test worker] DEBUG org.hibernate.SQL - create table passenger_transport (passengerCount integer not null, id bigint not null, primary key (id)) engine=InnoDB
+—02:02:22.807 [Test worker] DEBUG org.hibernate.SQL - create table refrigerated_truck (maxTemperature float(53) not null, minTemperature float(53) not null, id bigint not null, primary key (id)) engine=InnoDB
+~02:02:22.817 [Test worker] DEBUG org.hibernate.SQL - create table staff (id bigint not null, primary key (id)) engine=InnoDB
+§02:02:22.828 [Test worker] DEBUG org.hibernate.SQL - create table tanker (isPressurized bit not null, volumeCapacity float(53) not null, id bigint not null, type enum ('CONCRETE','FRAGILE','GAS','GENERAL','HAZARDOUS','LIQUID','PERISHABLE','POWDER') not null, primary key (id)) engine=InnoDB
+ñ02:02:22.838 [Test worker] DEBUG org.hibernate.SQL - create table transport (isPaid bit not null, price decimal(38,2) not null, arrivalDate datetime(6) not null, client_id bigint, company_id bigint, departureDate datetime(6) not null, driver_id bigint, id bigint not null auto_increment, vehicle_id bigint, endPoint varchar(255) not null, startPoint varchar(255) not null, primary key (id)) engine=InnoDB
+†02:02:22.849 [Test worker] DEBUG org.hibernate.SQL - create table truck (maxLoadWeight float(53) not null, id bigint not null, primary key (id)) engine=InnoDB
+“02:02:22.860 [Test worker] DEBUG org.hibernate.SQL - create table vehicle (company_id bigint, id bigint not null auto_increment, make varchar(255) not null, model varchar(255), primary key (id)) engine=InnoDB
+ö02:02:22.871 [Test worker] DEBUG org.hibernate.SQL - alter table bus add constraint FK7uds9bih0ilsmyao2qy5ruhru foreign key (id) references vehicle (id)
+®02:02:22.894 [Test worker] DEBUG org.hibernate.SQL - alter table cargo_transport add constraint FK3vik6f88hbkialfyc02761mkx foreign key (id) references transport (id)
+£02:02:22.926 [Test worker] DEBUG org.hibernate.SQL - alter table concrete_mixer add constraint FK8ew0rq66bhpalwl2t6jljbjli foreign key (id) references truck (id)
+û02:02:22.949 [Test worker] DEBUG org.hibernate.SQL - alter table driver add constraint FKf3l9tcvwqrw8ym63n0vfqc8vv foreign key (id) references employee (id)
+≤02:02:22.973 [Test worker] DEBUG org.hibernate.SQL - alter table driver_qualifications add constraint FK1nbt91dxphf0a9yyw58yqvw7p foreign key (driver_id) references driver (id)
+ß02:02:22.998 [Test worker] DEBUG org.hibernate.SQL - alter table employee add constraint FK5v50ed2bjh60n1gc7ifuxmgf4 foreign key (company_id) references company (id)
+¨02:02:23.026 [Test worker] DEBUG org.hibernate.SQL - alter table passenger_transport add constraint FKrqp69i0grqpoftqibuey6sd5v foreign key (id) references transport (id)
+ß02:02:23.052 [Test worker] DEBUG org.hibernate.SQL - alter table refrigerated_truck add constraint FK20i117sfotd2r1ag7fbep7omh foreign key (id) references truck (id)
+ù02:02:23.076 [Test worker] DEBUG org.hibernate.SQL - alter table staff add constraint FKav6774qxrey70920sd85yv78r foreign key (id) references employee (id)
+õ02:02:23.100 [Test worker] DEBUG org.hibernate.SQL - alter table tanker add constraint FKqwlxfvtwoubuaci1l8fgp36gl foreign key (id) references truck (id)
+¶02:02:23.124 [Test worker] DEBUG org.hibernate.SQL - alter table transport add constraint FKhiv3b16vlt1pth6i2sgkq1bhl foreign key (client_id) references client (id)
+®02:02:23.155 [Test worker] DEBUG org.hibernate.SQL - alter table transport add constraint FK2gggq9es5hg8dw3mo8n8uhqcj foreign key (company_id) references company (id)
+¶02:02:23.189 [Test worker] DEBUG org.hibernate.SQL - alter table transport add constraint FKa2n8n1m74gpy7gqt0piipr73b foreign key (driver_id) references driver (id)
+®02:02:23.224 [Test worker] DEBUG org.hibernate.SQL - alter table transport add constraint FK8xipceubfxar38wptuhjhfjkw foreign key (vehicle_id) references vehicle (id)
+ú02:02:23.262 [Test worker] DEBUG org.hibernate.SQL - alter table truck add constraint FKhr1a7ybtqa417xh5rfa1x2moc foreign key (id) references vehicle (id)
+¶02:02:23.292 [Test worker] DEBUG org.hibernate.SQL - alter table vehicle add constraint FK8l9m1j8m30mdmdcbbt1c4trkd foreign key (company_id) references company (id)
+u02:02:23.390 [Test worker] DEBUG org.hibernate.SQL - insert into company (address,name,totalRevenue) values (?,?,?)
+h02:02:23.397 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [null]
+k02:02:23.398 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Co]
+e02:02:23.398 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:NUMERIC) <- [0]
+s02:02:23.441 [Test worker] DEBUG org.hibernate.SQL - insert into employee (company_id,name,salary) values (?,?,?)
+d02:02:23.441 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [1]
+o02:02:23.442 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Driver]
+h02:02:23.442 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:NUMERIC) <- [1000]
+Y02:02:23.445 [Test worker] DEBUG org.hibernate.SQL - insert into driver (id) values (?)
+d02:02:23.445 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [1]
+02:02:23.453 [Test worker] DEBUG org.hibernate.SQL - insert into driver_qualifications (driver_id,qualification) values (?,?)
+d02:02:23.453 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [1]
+j02:02:23.454 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:ENUM) <- [OVERSIZED]
+q02:02:23.464 [Test worker] DEBUG org.hibernate.SQL - insert into vehicle (company_id,make,model) values (?,?,?)
+g02:02:23.464 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [null]
+n02:02:23.464 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Truck]
+h02:02:23.464 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:VARCHAR) <- [null]
+h02:02:23.466 [Test worker] DEBUG org.hibernate.SQL - insert into truck (maxLoadWeight,id) values (?,?)
+j02:02:23.466 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:DOUBLE) <- [10000.0]
+d02:02:23.466 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:BIGINT) <- [1]
+q02:02:23.476 [Test worker] DEBUG org.hibernate.SQL - insert into client (email,name,phoneNumber) values (?,?,?)
+h02:02:23.478 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [null]
+o02:02:23.478 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Client]
+h02:02:23.478 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:VARCHAR) <- [null]
+ì02:02:23.957 [Test worker] DEBUG org.hibernate.SQL - select d1_0.id,d1_1.company_id,d1_1.name,d1_1.salary,q1_0.driver_id,q1_0.qualification from driver d1_0 join employee d1_1 on d1_0.id=d1_1.id left join driver_qualifications q1_0 on d1_0.id=q1_0.driver_id where d1_0.id=?
+d02:02:23.958 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [1]
+u02:02:23.986 [Test worker] DEBUG org.hibernate.SQL - insert into company (address,name,totalRevenue) values (?,?,?)
+h02:02:23.986 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [null]
+k02:02:23.986 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Co]
+e02:02:23.986 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:NUMERIC) <- [0]
+s02:02:23.990 [Test worker] DEBUG org.hibernate.SQL - insert into employee (company_id,name,salary) values (?,?,?)
+d02:02:23.991 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [2]
+o02:02:23.991 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Driver]
+h02:02:23.991 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:NUMERIC) <- [1000]
+Y02:02:23.992 [Test worker] DEBUG org.hibernate.SQL - insert into driver (id) values (?)
+d02:02:23.992 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [2]
+q02:02:23.995 [Test worker] DEBUG org.hibernate.SQL - insert into vehicle (company_id,make,model) values (?,?,?)
+g02:02:23.995 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [null]
+n02:02:23.996 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Truck]
+h02:02:23.996 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:VARCHAR) <- [null]
+h02:02:23.997 [Test worker] DEBUG org.hibernate.SQL - insert into truck (maxLoadWeight,id) values (?,?)
+j02:02:23.997 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:DOUBLE) <- [10000.0]
+d02:02:23.997 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:BIGINT) <- [2]
+q02:02:24.000 [Test worker] DEBUG org.hibernate.SQL - insert into client (email,name,phoneNumber) values (?,?,?)
+h02:02:24.001 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [null]
+o02:02:24.001 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Client]
+h02:02:24.001 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:VARCHAR) <- [null]
+ì02:02:24.008 [Test worker] DEBUG org.hibernate.SQL - select d1_0.id,d1_1.company_id,d1_1.name,d1_1.salary,q1_0.driver_id,q1_0.qualification from driver d1_0 join employee d1_1 on d1_0.id=d1_1.id left join driver_qualifications q1_0 on d1_0.id=q1_0.driver_id where d1_0.id=?
+d02:02:24.009 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [2]
+u02:02:24.014 [Test worker] DEBUG org.hibernate.SQL - insert into company (address,name,totalRevenue) values (?,?,?)
+h02:02:24.014 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [null]
+k02:02:24.014 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Co]
+e02:02:24.014 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:NUMERIC) <- [0]
+s02:02:24.019 [Test worker] DEBUG org.hibernate.SQL - insert into employee (company_id,name,salary) values (?,?,?)
+d02:02:24.019 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [3]
+o02:02:24.019 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Driver]
+h02:02:24.019 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:NUMERIC) <- [1000]
+Y02:02:24.020 [Test worker] DEBUG org.hibernate.SQL - insert into driver (id) values (?)
+d02:02:24.021 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [3]
+q02:02:24.024 [Test worker] DEBUG org.hibernate.SQL - insert into vehicle (company_id,make,model) values (?,?,?)
+g02:02:24.024 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [null]
+n02:02:24.025 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Truck]
+h02:02:24.025 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:VARCHAR) <- [null]
+h02:02:24.026 [Test worker] DEBUG org.hibernate.SQL - insert into truck (maxLoadWeight,id) values (?,?)
+j02:02:24.026 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:DOUBLE) <- [10000.0]
+d02:02:24.026 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:BIGINT) <- [3]
+q02:02:24.030 [Test worker] DEBUG org.hibernate.SQL - insert into client (email,name,phoneNumber) values (?,?,?)
+h02:02:24.031 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [null]
+o02:02:24.031 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Client]
+h02:02:24.031 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:VARCHAR) <- [null]
+q02:02:24.038 [Test worker] DEBUG org.hibernate.SQL - insert into vehicle (company_id,make,model) values (?,?,?)
+g02:02:24.038 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [null]
+n02:02:24.038 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [ThermoKing]
+h02:02:24.038 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:VARCHAR) <- [null]
+h02:02:24.039 [Test worker] DEBUG org.hibernate.SQL - insert into truck (maxLoadWeight,id) values (?,?)
+j02:02:24.039 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:DOUBLE) <- [10000.0]
+d02:02:24.040 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:BIGINT) <- [4]
+á02:02:24.040 [Test worker] DEBUG org.hibernate.SQL - insert into refrigerated_truck (maxTemperature,minTemperature,id) values (?,?,?)
+f02:02:24.040 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:DOUBLE) <- [5.0]
+h02:02:24.040 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:DOUBLE) <- [-20.0]
+d02:02:24.040 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:BIGINT) <- [4]
+ì02:02:24.044 [Test worker] DEBUG org.hibernate.SQL - select d1_0.id,d1_1.company_id,d1_1.name,d1_1.salary,q1_0.driver_id,q1_0.qualification from driver d1_0 join employee d1_1 on d1_0.id=d1_1.id left join driver_qualifications q1_0 on d1_0.id=q1_0.driver_id where d1_0.id=?
+d02:02:24.045 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [3]
+u02:02:24.050 [Test worker] DEBUG org.hibernate.SQL - insert into company (address,name,totalRevenue) values (?,?,?)
+h02:02:24.050 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [null]
+k02:02:24.050 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Co]
+e02:02:24.050 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:NUMERIC) <- [0]
+s02:02:24.054 [Test worker] DEBUG org.hibernate.SQL - insert into employee (company_id,name,salary) values (?,?,?)
+d02:02:24.055 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [4]
+o02:02:24.055 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Driver]
+h02:02:24.055 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:NUMERIC) <- [1000]
+Y02:02:24.056 [Test worker] DEBUG org.hibernate.SQL - insert into driver (id) values (?)
+d02:02:24.056 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [4]
+q02:02:24.060 [Test worker] DEBUG org.hibernate.SQL - insert into vehicle (company_id,make,model) values (?,?,?)
+g02:02:24.060 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [null]
+n02:02:24.061 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Truck]
+h02:02:24.061 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:VARCHAR) <- [null]
+h02:02:24.062 [Test worker] DEBUG org.hibernate.SQL - insert into truck (maxLoadWeight,id) values (?,?)
+j02:02:24.062 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:DOUBLE) <- [10000.0]
+d02:02:24.063 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:BIGINT) <- [5]
+q02:02:24.067 [Test worker] DEBUG org.hibernate.SQL - insert into client (email,name,phoneNumber) values (?,?,?)
+h02:02:24.067 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [null]
+o02:02:24.067 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Client]
+h02:02:24.067 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:VARCHAR) <- [null]
+ì02:02:24.071 [Test worker] DEBUG org.hibernate.SQL - select d1_0.id,d1_1.company_id,d1_1.name,d1_1.salary,q1_0.driver_id,q1_0.qualification from driver d1_0 join employee d1_1 on d1_0.id=d1_1.id left join driver_qualifications q1_0 on d1_0.id=q1_0.driver_id where d1_0.id=?
+d02:02:24.071 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [4]
+–02:02:24.076 [Test worker] DEBUG org.hibernate.SQL - insert into transport (arrivalDate,client_id,company_id,departureDate,driver_id,endPoint,isPaid,price,startPoint,vehicle_id) values (?,?,?,?,?,?,?,?,?,?)
+É02:02:24.076 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:TIMESTAMP) <- [2026-01-06T02:02:24.070578100]
+d02:02:24.076 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:BIGINT) <- [4]
+d02:02:24.076 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:BIGINT) <- [4]
+É02:02:24.076 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (4:TIMESTAMP) <- [2026-01-05T02:02:24.070578100]
+d02:02:24.076 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (5:BIGINT) <- [4]
+e02:02:24.076 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (6:VARCHAR) <- [B]
+i02:02:24.076 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (7:BOOLEAN) <- [false]
+k02:02:24.078 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (8:NUMERIC) <- [5000.00]
+e02:02:24.078 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (9:VARCHAR) <- [A]
+e02:02:24.078 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (10:BIGINT) <- [5]
+—02:02:24.083 [Test worker] DEBUG org.hibernate.SQL - insert into cargo_transport (cargoType,height,isHazardous,isOversized,length,requiredMaxTemp,requiredMinTemp,weight,width,id) values (?,?,?,?,?,?,?,?,?,?)
+h02:02:24.083 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:ENUM) <- [GENERAL]
+g02:02:24.085 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:DOUBLE) <- [null]
+i02:02:24.085 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:BOOLEAN) <- [false]
+i02:02:24.085 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (4:BOOLEAN) <- [false]
+g02:02:24.085 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (5:DOUBLE) <- [null]
+g02:02:24.085 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (6:DOUBLE) <- [null]
+g02:02:24.085 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (7:DOUBLE) <- [null]
+h02:02:24.085 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (8:DOUBLE) <- [500.0]
+g02:02:24.085 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (9:DOUBLE) <- [null]
+e02:02:24.085 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (10:BIGINT) <- [1]
+œ02:02:24.093 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id,case when t1_2.id is not null then 1 when t1_1.id is not null then 2 end,t1_0.arrivalDate,t1_0.client_id,t1_0.company_id,t1_0.departureDate,t1_0.driver_id,t1_0.endPoint,t1_0.isPaid,t1_0.price,t1_0.startPoint,t1_0.vehicle_id,t1_1.cargoType,t1_1.height,t1_1.isHazardous,t1_1.isOversized,t1_1.length,t1_1.requiredMaxTemp,t1_1.requiredMinTemp,t1_1.weight,t1_1.width,t1_2.passengerCount from transport t1_0 left join cargo_transport t1_1 on t1_0.id=t1_1.id left join passenger_transport t1_2 on t1_0.id=t1_2.id where t1_0.id=?
+d02:02:24.094 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [1]
+–02:02:24.104 [Test worker] DEBUG org.hibernate.SQL - select ct1_0.id,ct1_1.arrivalDate,ct1_1.client_id,ct1_1.company_id,ct1_1.departureDate,ct1_1.driver_id,ct1_1.endPoint,ct1_1.isPaid,ct1_1.price,ct1_1.startPoint,ct1_1.vehicle_id,ct1_0.cargoType,ct1_0.height,ct1_0.isHazardous,ct1_0.isOversized,ct1_0.length,ct1_0.requiredMaxTemp,ct1_0.requiredMinTemp,ct1_0.weight,ct1_0.width from cargo_transport ct1_0 join transport ct1_1 on ct1_0.id=ct1_1.id where ct1_0.id=?
+d02:02:24.104 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [1]
+œ02:02:24.113 [Test worker] DEBUG org.hibernate.SQL - update transport set arrivalDate=?,client_id=?,company_id=?,departureDate=?,driver_id=?,endPoint=?,isPaid=?,price=?,startPoint=?,vehicle_id=? where id=?
+Ä02:02:24.114 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:TIMESTAMP) <- [2026-01-06T02:02:24.070578]
+d02:02:24.114 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:BIGINT) <- [4]
+d02:02:24.114 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:BIGINT) <- [4]
+Ä02:02:24.114 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (4:TIMESTAMP) <- [2026-01-05T02:02:24.070578]
+d02:02:24.114 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (5:BIGINT) <- [4]
+e02:02:24.115 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (6:VARCHAR) <- [B]
+h02:02:24.115 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (7:BOOLEAN) <- [true]
+k02:02:24.115 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (8:NUMERIC) <- [5000.00]
+e02:02:24.115 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (9:VARCHAR) <- [A]
+e02:02:24.115 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (10:BIGINT) <- [5]
+e02:02:24.115 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (11:BIGINT) <- [1]
+ê02:02:24.121 [Test worker] DEBUG org.hibernate.SQL - select c1_0.id,c1_0.address,c1_0.name,c1_0.totalRevenue from company c1_0 where c1_0.id=?
+d02:02:24.121 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [4]
+ê02:02:24.127 [Test worker] DEBUG org.hibernate.SQL - select c1_0.id,c1_0.address,c1_0.name,c1_0.totalRevenue from company c1_0 where c1_0.id=?
+d02:02:24.127 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [4]
+t02:02:24.129 [Test worker] DEBUG org.hibernate.SQL - update company set address=?,name=?,totalRevenue=? where id=?
+h02:02:24.129 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [null]
+k02:02:24.129 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Co]
+k02:02:24.129 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:NUMERIC) <- [5000.00]
+d02:02:24.129 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (4:BIGINT) <- [4]
+ê02:02:24.132 [Test worker] DEBUG org.hibernate.SQL - select c1_0.id,c1_0.address,c1_0.name,c1_0.totalRevenue from company c1_0 where c1_0.id=?
+d02:02:24.133 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [4]
+u02:02:24.138 [Test worker] DEBUG org.hibernate.SQL - insert into company (address,name,totalRevenue) values (?,?,?)
+h02:02:24.138 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [null]
+k02:02:24.138 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Co]
+e02:02:24.138 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:NUMERIC) <- [0]
+s02:02:24.144 [Test worker] DEBUG org.hibernate.SQL - insert into employee (company_id,name,salary) values (?,?,?)
+d02:02:24.144 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [5]
+o02:02:24.144 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Driver]
+h02:02:24.144 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:NUMERIC) <- [1000]
+Y02:02:24.145 [Test worker] DEBUG org.hibernate.SQL - insert into driver (id) values (?)
+d02:02:24.145 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [5]
+q02:02:24.148 [Test worker] DEBUG org.hibernate.SQL - insert into vehicle (company_id,make,model) values (?,?,?)
+g02:02:24.149 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [null]
+n02:02:24.149 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Truck]
+h02:02:24.150 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:VARCHAR) <- [null]
+h02:02:24.150 [Test worker] DEBUG org.hibernate.SQL - insert into truck (maxLoadWeight,id) values (?,?)
+j02:02:24.150 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:DOUBLE) <- [10000.0]
+d02:02:24.150 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:BIGINT) <- [6]
+q02:02:24.155 [Test worker] DEBUG org.hibernate.SQL - insert into client (email,name,phoneNumber) values (?,?,?)
+h02:02:24.155 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [null]
+o02:02:24.155 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Client]
+h02:02:24.156 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:VARCHAR) <- [null]
 Ó
-02:00:56.032 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id,case when t1_2.id is not null then 1 when t1_1.id is not null then 2 end,t1_0.arrivalDate,c1_0.id,c1_0.email,c1_0.name,c1_0.phoneNumber,t1_0.company_id,t1_0.departureDate,d1_0.id,d1_1.company_id,d1_1.name,d1_1.salary,t1_0.endPoint,t1_0.isPaid,t1_0.price,t1_0.startPoint,v1_0.id,case when v1_4.id is not null then 3 when v1_3.id is not null then 4 when v1_2.id is not null then 5 when v1_1.id is not null then 1 when v1_5.id is not null then 2 end,v1_0.company_id,v1_0.make,v1_0.model,v1_1.maxPassengers,v1_2.drumCapacity,v1_3.maxTemperature,v1_3.minTemperature,v1_4.isPressurized,v1_4.type,v1_4.volumeCapacity,v1_5.maxLoadWeight,t1_1.cargoType,t1_1.height,t1_1.isHazardous,t1_1.isOversized,t1_1.length,t1_1.requiredMaxTemp,t1_1.requiredMinTemp,t1_1.weight,t1_1.width,t1_2.passengerCount from transport t1_0 left join cargo_transport t1_1 on t1_0.id=t1_1.id left join passenger_transport t1_2 on t1_0.id=t1_2.id left join driver d1_0 on d1_0.id=t1_0.driver_id left join employee d1_1 on d1_0.id=d1_1.id left join client c1_0 on c1_0.id=t1_0.client_id left join vehicle v1_0 on v1_0.id=t1_0.vehicle_id left join bus v1_1 on v1_0.id=v1_1.id left join concrete_mixer v1_2 on v1_0.id=v1_2.id left join refrigerated_truck v1_3 on v1_0.id=v1_3.id left join tanker v1_4 on v1_0.id=v1_4.id left join truck v1_5 on v1_0.id=v1_5.id
+02:02:24.168 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id,case when t1_2.id is not null then 1 when t1_1.id is not null then 2 end,t1_0.arrivalDate,c1_0.id,c1_0.email,c1_0.name,c1_0.phoneNumber,t1_0.company_id,t1_0.departureDate,d1_0.id,d1_1.company_id,d1_1.name,d1_1.salary,t1_0.endPoint,t1_0.isPaid,t1_0.price,t1_0.startPoint,v1_0.id,case when v1_4.id is not null then 3 when v1_3.id is not null then 4 when v1_2.id is not null then 5 when v1_1.id is not null then 1 when v1_5.id is not null then 2 end,v1_0.company_id,v1_0.make,v1_0.model,v1_1.maxPassengers,v1_2.drumCapacity,v1_3.maxTemperature,v1_3.minTemperature,v1_4.isPressurized,v1_4.type,v1_4.volumeCapacity,v1_5.maxLoadWeight,t1_1.cargoType,t1_1.height,t1_1.isHazardous,t1_1.isOversized,t1_1.length,t1_1.requiredMaxTemp,t1_1.requiredMinTemp,t1_1.weight,t1_1.width,t1_2.passengerCount from transport t1_0 left join cargo_transport t1_1 on t1_0.id=t1_1.id left join passenger_transport t1_2 on t1_0.id=t1_2.id left join driver d1_0 on d1_0.id=t1_0.driver_id left join employee d1_1 on d1_0.id=d1_1.id left join client c1_0 on c1_0.id=t1_0.client_id left join vehicle v1_0 on v1_0.id=t1_0.vehicle_id left join bus v1_1 on v1_0.id=v1_1.id left join concrete_mixer v1_2 on v1_0.id=v1_2.id left join refrigerated_truck v1_3 on v1_0.id=v1_3.id left join tanker v1_4 on v1_0.id=v1_4.id left join truck v1_5 on v1_0.id=v1_5.id
 9Report successfully exported to: test_report_export.txt
-u02:00:56.050 [Test worker] DEBUG org.hibernate.SQL - insert into company (address,name,totalRevenue) values (?,?,?)
-h02:00:56.051 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [null]
-k02:00:56.051 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Co]
-e02:00:56.051 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:NUMERIC) <- [0]
-s02:00:56.056 [Test worker] DEBUG org.hibernate.SQL - insert into employee (company_id,name,salary) values (?,?,?)
-d02:00:56.056 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [6]
-o02:00:56.056 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Driver]
-h02:00:56.058 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:NUMERIC) <- [1000]
-Y02:00:56.058 [Test worker] DEBUG org.hibernate.SQL - insert into driver (id) values (?)
-d02:00:56.059 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [6]
-q02:00:56.065 [Test worker] DEBUG org.hibernate.SQL - insert into vehicle (company_id,make,model) values (?,?,?)
-g02:00:56.065 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [null]
-n02:00:56.065 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Truck]
-h02:00:56.065 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:VARCHAR) <- [null]
-h02:00:56.067 [Test worker] DEBUG org.hibernate.SQL - insert into truck (maxLoadWeight,id) values (?,?)
-j02:00:56.068 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:DOUBLE) <- [10000.0]
-d02:00:56.068 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:BIGINT) <- [7]
-q02:00:56.073 [Test worker] DEBUG org.hibernate.SQL - insert into client (email,name,phoneNumber) values (?,?,?)
-h02:00:56.074 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [null]
-o02:00:56.074 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Client]
-h02:00:56.074 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:VARCHAR) <- [null]
-u02:00:56.082 [Test worker] DEBUG org.hibernate.SQL - insert into company (address,name,totalRevenue) values (?,?,?)
-h02:00:56.083 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [null]
-j02:00:56.083 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Bus Co]
-e02:00:56.083 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:NUMERIC) <- [0]
-s02:00:56.089 [Test worker] DEBUG org.hibernate.SQL - insert into employee (company_id,name,salary) values (?,?,?)
-d02:00:56.089 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [7]
-l02:00:56.089 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Bus Dave]
-h02:00:56.089 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:NUMERIC) <- [1000]
-Y02:00:56.090 [Test worker] DEBUG org.hibernate.SQL - insert into driver (id) values (?)
-d02:00:56.090 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [7]
-q02:00:56.095 [Test worker] DEBUG org.hibernate.SQL - insert into client (email,name,phoneNumber) values (?,?,?)
-h02:00:56.095 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [null]
-n02:00:56.095 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Tour Group]
-h02:00:56.095 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:VARCHAR) <- [null]
-q02:00:56.103 [Test worker] DEBUG org.hibernate.SQL - insert into vehicle (company_id,make,model) values (?,?,?)
-g02:00:56.103 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [null]
-l02:00:56.103 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Mercedes]
-h02:00:56.103 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:VARCHAR) <- [null]
-f02:00:56.105 [Test worker] DEBUG org.hibernate.SQL - insert into bus (maxPassengers,id) values (?,?)
-f02:00:56.105 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:INTEGER) <- [50]
-d02:00:56.105 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:BIGINT) <- [8]
-ì02:00:56.113 [Test worker] DEBUG org.hibernate.SQL - select d1_0.id,d1_1.company_id,d1_1.name,d1_1.salary,q1_0.driver_id,q1_0.qualification from driver d1_0 join employee d1_1 on d1_0.id=d1_1.id left join driver_qualifications q1_0 on d1_0.id=q1_0.driver_id where d1_0.id=?
-d02:00:56.114 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [7]
-	u02:00:56.120 [Test worker] DEBUG org.hibernate.SQL - insert into company (address,name,totalRevenue) values (?,?,?)
-	h02:00:56.120 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [null]
-	k02:00:56.120 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Co]
-	e02:00:56.121 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:NUMERIC) <- [0]
-	s02:00:56.126 [Test worker] DEBUG org.hibernate.SQL - insert into employee (company_id,name,salary) values (?,?,?)
-	d02:00:56.126 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [8]
-	o02:00:56.126 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Driver]
-	h02:00:56.126 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:NUMERIC) <- [1000]
-	Y02:00:56.128 [Test worker] DEBUG org.hibernate.SQL - insert into driver (id) values (?)
-	d02:00:56.128 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [8]
-	q02:00:56.133 [Test worker] DEBUG org.hibernate.SQL - insert into vehicle (company_id,make,model) values (?,?,?)
-	g02:00:56.134 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [null]
-	n02:00:56.134 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Truck]
-	h02:00:56.134 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:VARCHAR) <- [null]
-	h02:00:56.135 [Test worker] DEBUG org.hibernate.SQL - insert into truck (maxLoadWeight,id) values (?,?)
-	j02:00:56.136 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:DOUBLE) <- [10000.0]
-	d02:00:56.136 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:BIGINT) <- [9]
-	q02:00:56.141 [Test worker] DEBUG org.hibernate.SQL - insert into client (email,name,phoneNumber) values (?,?,?)
-	h02:00:56.141 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [null]
-	o02:00:56.141 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Client]
-	h02:00:56.141 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:VARCHAR) <- [null]
-	ì02:00:56.146 [Test worker] DEBUG org.hibernate.SQL - select d1_0.id,d1_1.company_id,d1_1.name,d1_1.salary,q1_0.driver_id,q1_0.qualification from driver d1_0 join employee d1_1 on d1_0.id=d1_1.id left join driver_qualifications q1_0 on d1_0.id=q1_0.driver_id where d1_0.id=?
-	d02:00:56.147 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [8]
+u02:02:24.181 [Test worker] DEBUG org.hibernate.SQL - insert into company (address,name,totalRevenue) values (?,?,?)
+h02:02:24.181 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [null]
+k02:02:24.181 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Co]
+e02:02:24.181 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:NUMERIC) <- [0]
+s02:02:24.185 [Test worker] DEBUG org.hibernate.SQL - insert into employee (company_id,name,salary) values (?,?,?)
+d02:02:24.186 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [6]
+o02:02:24.186 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Driver]
+h02:02:24.186 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:NUMERIC) <- [1000]
+Y02:02:24.186 [Test worker] DEBUG org.hibernate.SQL - insert into driver (id) values (?)
+d02:02:24.188 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [6]
+q02:02:24.191 [Test worker] DEBUG org.hibernate.SQL - insert into vehicle (company_id,make,model) values (?,?,?)
+g02:02:24.191 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [null]
+n02:02:24.192 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Truck]
+h02:02:24.192 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:VARCHAR) <- [null]
+h02:02:24.193 [Test worker] DEBUG org.hibernate.SQL - insert into truck (maxLoadWeight,id) values (?,?)
+j02:02:24.193 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:DOUBLE) <- [10000.0]
+d02:02:24.193 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:BIGINT) <- [7]
+q02:02:24.196 [Test worker] DEBUG org.hibernate.SQL - insert into client (email,name,phoneNumber) values (?,?,?)
+h02:02:24.198 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [null]
+o02:02:24.198 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Client]
+h02:02:24.198 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:VARCHAR) <- [null]
+u02:02:24.205 [Test worker] DEBUG org.hibernate.SQL - insert into company (address,name,totalRevenue) values (?,?,?)
+h02:02:24.205 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [null]
+j02:02:24.205 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Bus Co]
+e02:02:24.206 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:NUMERIC) <- [0]
+s02:02:24.210 [Test worker] DEBUG org.hibernate.SQL - insert into employee (company_id,name,salary) values (?,?,?)
+d02:02:24.210 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [7]
+l02:02:24.210 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Bus Dave]
+h02:02:24.210 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:NUMERIC) <- [1000]
+Y02:02:24.211 [Test worker] DEBUG org.hibernate.SQL - insert into driver (id) values (?)
+d02:02:24.211 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [7]
+q02:02:24.214 [Test worker] DEBUG org.hibernate.SQL - insert into client (email,name,phoneNumber) values (?,?,?)
+h02:02:24.215 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [null]
+n02:02:24.215 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Tour Group]
+h02:02:24.215 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:VARCHAR) <- [null]
+q02:02:24.221 [Test worker] DEBUG org.hibernate.SQL - insert into vehicle (company_id,make,model) values (?,?,?)
+g02:02:24.221 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [null]
+l02:02:24.221 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Mercedes]
+h02:02:24.221 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:VARCHAR) <- [null]
+f02:02:24.222 [Test worker] DEBUG org.hibernate.SQL - insert into bus (maxPassengers,id) values (?,?)
+f02:02:24.222 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:INTEGER) <- [50]
+d02:02:24.222 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:BIGINT) <- [8]
+ì02:02:24.228 [Test worker] DEBUG org.hibernate.SQL - select d1_0.id,d1_1.company_id,d1_1.name,d1_1.salary,q1_0.driver_id,q1_0.qualification from driver d1_0 join employee d1_1 on d1_0.id=d1_1.id left join driver_qualifications q1_0 on d1_0.id=q1_0.driver_id where d1_0.id=?
+d02:02:24.229 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [7]
+	u02:02:24.233 [Test worker] DEBUG org.hibernate.SQL - insert into company (address,name,totalRevenue) values (?,?,?)
+	h02:02:24.233 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [null]
+	k02:02:24.233 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Co]
+	e02:02:24.233 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:NUMERIC) <- [0]
+	s02:02:24.238 [Test worker] DEBUG org.hibernate.SQL - insert into employee (company_id,name,salary) values (?,?,?)
+	d02:02:24.238 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [8]
+	o02:02:24.238 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Driver]
+	h02:02:24.238 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:NUMERIC) <- [1000]
+	Y02:02:24.238 [Test worker] DEBUG org.hibernate.SQL - insert into driver (id) values (?)
+	d02:02:24.239 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [8]
+	q02:02:24.242 [Test worker] DEBUG org.hibernate.SQL - insert into vehicle (company_id,make,model) values (?,?,?)
+	g02:02:24.242 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [null]
+	n02:02:24.243 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Truck]
+	h02:02:24.243 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:VARCHAR) <- [null]
+	h02:02:24.243 [Test worker] DEBUG org.hibernate.SQL - insert into truck (maxLoadWeight,id) values (?,?)
+	j02:02:24.244 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:DOUBLE) <- [10000.0]
+	d02:02:24.244 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:BIGINT) <- [9]
+	q02:02:24.246 [Test worker] DEBUG org.hibernate.SQL - insert into client (email,name,phoneNumber) values (?,?,?)
+	h02:02:24.248 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [null]
+	o02:02:24.248 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [Test Client]
+	h02:02:24.248 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:VARCHAR) <- [null]
+	ì02:02:24.251 [Test worker] DEBUG org.hibernate.SQL - select d1_0.id,d1_1.company_id,d1_1.name,d1_1.salary,q1_0.driver_id,q1_0.qualification from driver d1_0 join employee d1_1 on d1_0.id=d1_1.id left join driver_qualifications q1_0 on d1_0.id=q1_0.driver_id where d1_0.id=?
+	d02:02:24.252 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [8]

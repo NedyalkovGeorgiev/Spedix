@@ -154,7 +154,7 @@ public class Main {
                 hazmatTransport.setPrice(new BigDecimal("1000"));
                 hazmatTransport.setDepartureDate(LocalDateTime.now());
                 hazmatTransport.setArrivalDate(LocalDateTime.now().plusDays(1));
-                hazmatTransport.setHazardous(true); // ☢️ HAZARDOUS!
+                hazmatTransport.setHazardous(true);
                 hazmatTransport.setCompany(company);
                 hazmatTransport.setClient(client);
                 hazmatTransport.setVehicle(truck);
@@ -162,7 +162,7 @@ public class Main {
 
                 transportService.logTransport(hazmatTransport);
             } catch (IllegalArgumentException e) {
-                System.out.println("✅ Business Logic Shield correctly blocked Bob: " + e.getMessage());
+                System.out.println("Business Logic Shield correctly blocked Bob: " + e.getMessage());
             }
 
             // TEST 7: Get Drivers (DTO + Lazy Collections)
