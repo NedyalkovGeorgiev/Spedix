@@ -3,6 +3,7 @@ package org.informatics.service;
 import org.informatics.dao.VehicleDao;
 import org.informatics.dto.VehicleDTO;
 import org.informatics.entity.Vehicle;
+import org.informatics.validator.EntityValidator;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,6 +12,7 @@ public class VehicleService {
     private final VehicleDao vehicleDao = new VehicleDao();
 
     public void createVehicle(Vehicle vehicle) {
+        EntityValidator.validate(vehicle);
         vehicleDao.create(vehicle);
     }
 

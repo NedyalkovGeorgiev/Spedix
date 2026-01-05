@@ -7,6 +7,7 @@ import org.informatics.dto.EmployeeDTO;
 import org.informatics.entity.Driver;
 import org.informatics.entity.Employee;
 import org.informatics.entity.Qualification;
+import org.informatics.validator.EntityValidator;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,8 +15,11 @@ import java.util.stream.Collectors;
 public class EmployeeService {
     private final DriverDao driverDao = new DriverDao();
 
+    private final EmployeeDao employeeDao = new EmployeeDao();
+
     public void createEmployee(Employee employee) {
-        driverDao.create((Driver) employee);
+        EntityValidator.validate(employee);
+        employeeDao.create(employee);
     }
 
     public EmployeeDTO convertToEmployeeDTO(Employee employee) {
@@ -46,7 +50,7 @@ public class EmployeeService {
     }
 
     public List<EmployeeDTO> getAllEmployeesSortedBySalary() {
-        return new EmployeeDao().getAllWithCompany().stream()
+        return employeeDao.getAllWithCompany().stream()
                 .map(this::convertToEmployeeDTO)
                 .sorted((e1, e2) -> e2.getSalary().compareTo(e1.getSalary()))
                 .collect(Collectors.toList());

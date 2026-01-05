@@ -3,6 +3,7 @@ package org.informatics.service;
 import org.informatics.dao.CompanyDao;
 import org.informatics.dto.CompanyDTO;
 import org.informatics.entity.Company;
+import org.informatics.validator.EntityValidator;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,6 +12,7 @@ public class CompanyService {
     private final CompanyDao companyDao = new CompanyDao();
 
     public void createCompany(Company company) {
+        EntityValidator.validate(company);
         companyDao.create(company);
     }
 
@@ -45,6 +47,4 @@ public class CompanyService {
                 .employeeCount(company.getEmployees() != null ? company.getEmployees().size() : 0)
                 .build();
     }
-
-
 }

@@ -13,6 +13,7 @@ import org.informatics.entity.Driver;
 import org.informatics.entity.Employee;
 import org.informatics.entity.PassengerTransport;
 import org.informatics.entity.RefrigeratedTruck;
+import org.informatics.entity.Staff;
 import org.informatics.entity.Tanker;
 import org.informatics.entity.Transport;
 import org.informatics.entity.Truck;
@@ -37,6 +38,7 @@ public class SessionFactoryUtil {
             configuration.addAnnotatedClass(Tanker.class);
             configuration.addAnnotatedClass(RefrigeratedTruck.class);
             configuration.addAnnotatedClass(ConcreteMixer.class);
+            configuration.addAnnotatedClass(Staff.class);
             ServiceRegistry serviceRegistry
                     = new StandardServiceRegistryBuilder()
                     .applySettings(configuration.getProperties()).build();

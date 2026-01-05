@@ -14,8 +14,9 @@ public abstract class GenericDao<T> {
     }
 
     public void create(T entity) {
+        Session session = SessionFactoryUtil.getSessionFactory().openSession();
         Transaction transaction = null;
-        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
+        try {
             transaction = session.beginTransaction();
             session.persist(entity);
             transaction.commit();
@@ -24,6 +25,8 @@ public abstract class GenericDao<T> {
                 transaction.rollback();
             }
             throw e;
+        } finally {
+            session.close();
         }
     }
 

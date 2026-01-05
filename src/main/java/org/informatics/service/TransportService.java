@@ -12,12 +12,12 @@ import org.informatics.entity.Bus;
 import org.informatics.entity.CargoTransport;
 import org.informatics.entity.Company;
 import org.informatics.entity.Driver;
-import org.informatics.entity.Employee;
 import org.informatics.entity.PassengerTransport;
 import org.informatics.entity.Qualification;
 import org.informatics.entity.RefrigeratedTruck;
 import org.informatics.entity.Transport;
 import org.informatics.entity.Truck;
+import org.informatics.validator.EntityValidator;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -28,6 +28,13 @@ public class TransportService {
     private final TransportDao transportDao = new TransportDao();
 
     public void logTransport(Transport transport) {
+        validateBusinessRules(transport);
+        transportDao.create(transport);
+    }
+
+    public void validateBusinessRules(Transport transport) {
+        EntityValidator.validate(transport);
+
         if (transport.getDriver() == null || transport.getVehicle() == null || transport.getClient() == null) {
             throw new IllegalArgumentException("Transport must have a Driver, Vehicle, and Client assigned!");
         }
@@ -80,8 +87,6 @@ public class TransportService {
                 throw new IllegalArgumentException("Passenger transport requires a Bus!");
             }
         }
-
-        transportDao.create(transport);
     }
 
     public void markAsPaid(Long transportId) {

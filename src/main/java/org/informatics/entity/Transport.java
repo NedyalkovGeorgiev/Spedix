@@ -13,6 +13,9 @@ import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -28,11 +31,22 @@ public abstract class Transport {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Start point is required")
     private String startPoint;
+
+    @NotBlank(message = "End point is required")
     private String endPoint;
+
+    @NotNull(message = "Departure date is required")
     private LocalDateTime departureDate;
+
+    @NotNull(message = "Arrival date is required")
     private LocalDateTime arrivalDate;
+
+    @NotNull(message = "Price is required")
+    @Positive(message = "Price must be a positive number")
     private BigDecimal price;
+
     private boolean isPaid;
 
     @ManyToOne(fetch =  FetchType.LAZY)

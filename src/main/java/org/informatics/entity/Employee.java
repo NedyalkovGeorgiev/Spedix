@@ -12,6 +12,8 @@ import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -26,8 +28,13 @@ public abstract class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotBlank(message = "Employee name is required")
     private String name;
+
+    @Positive(message = "Salary must be a positive number")
     private BigDecimal salary;
+
     @ManyToOne(fetch =  FetchType.LAZY)
     @JoinColumn(name = "company_id")
     private Company company;
